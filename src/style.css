@@ -25,6 +25,7 @@ body {
   font-family: var(--font-primary);
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
+  cursor: url('./assets/mouse.png'), auto;
 }
 
 * > span,
@@ -43,9 +44,55 @@ body,
 }
 
 body {
+  position: relative;
+  height: 100vh;
   gap: 0.6rem;
   padding: 2rem;
   flex-direction: column;
+  overflow: hidden;
+}
+
+body::after {
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 1px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  left: 50%;
+  bottom: -10%;
+  animation: cadent1 25s both infinite;
+  animation-delay: 10s;
+}
+
+@keyframes cadent1 {
+  0% {
+    transform: translateX(0rem) translateY(0rem);
+  }
+  100% {
+    transform: translateX(32rem) translateY(-48rem);
+  }
+}
+
+body::before {
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  left: -1px;
+  animation: cadent2 25s alternate-reverse infinite;
+}
+
+@keyframes cadent2 {
+  0% {
+    transform: translateX(0vw);
+  }
+  100% {
+    transform: translateX(101vw);
+    background: var(--color-primary);
+  }
 }
 
 .container {
@@ -56,7 +103,7 @@ body {
   height: 32rem;
   width: 75vw;
   border-radius: 1rem;
-  box-shadow: 16px 16px 0px #cccccc1a;
+  box-shadow: 16px 16px 0px #22222250;
 }
 
 h1 > span {
@@ -74,15 +121,32 @@ h1 {
 
 h1::before {
   position: absolute;
-  content: '';
-  left: 0;
-  top: 1.8rem;
-  width: 100%;
-  height: 0px;
+  content: attr(hr);
+  left: 5.05rem;
+  right: 0.2;
+  top: 0.4rem;
+  bottom: 0rem;
+  width: 2.5rem;
+  height: 2.5rem;
   background: transparent;
-  border: 1px dotted var(--color-primary);
-  opacity: 0.2;
+  border-radius: 50%;
+  border: 2px dotted var(--color-primary);
+  opacity: 1;
   z-index: -1;
+
+  animation: rotate 25s linear infinite;
+}
+h1 ::before:hover {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .countdown-timer {
@@ -90,7 +154,6 @@ h1::before {
   gap: 1.5rem;
   padding: 2rem;
   width: fit-content;
-
   background: var(--bg-countdown);
   border-radius: 1rem;
   backdrop-filter: blur(0.5rem);
@@ -152,7 +215,7 @@ footer span::before {
   }
   h1 ~ span {
     font-size: 1.5rem;
-    width: 16rem;
+    width: 8rem;
   }
 
   .container {
