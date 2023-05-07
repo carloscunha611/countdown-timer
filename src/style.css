@@ -20,12 +20,14 @@
 
 html,
 body {
+  viewport-fit: cover;
   background: url(./assets/bgH.jpg) center/cover;
   color: #ccc;
   font-family: var(--font-primary);
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   cursor: url('./assets/mouse.png'), auto;
+  overflow-y: auto;
 }
 
 * > span,
@@ -55,22 +57,25 @@ body {
 body::after {
   position: absolute;
   content: '';
-  width: 2px;
+  width: 1px;
   height: 1px;
   border-radius: 50%;
   background: var(--color-secondary);
-  left: 50%;
-  bottom: -10%;
+  left: 32%;
+  bottom: 0;
   animation: cadent1 25s both infinite;
+  opacity: 1;
   animation-delay: 10s;
 }
 
 @keyframes cadent1 {
   0% {
     transform: translateX(0rem) translateY(0rem);
+    opacity: 0.75;
   }
   100% {
     transform: translateX(32rem) translateY(-48rem);
+    opacity: 0;
   }
 }
 
@@ -81,17 +86,20 @@ body::before {
   height: 2px;
   border-radius: 50%;
   background: var(--color-secondary);
-  left: -1px;
-  animation: cadent2 25s alternate-reverse infinite;
+  left: 0px;
+  animation: cadent2 25s alternate infinite;
+  opacity: 1;
 }
 
 @keyframes cadent2 {
   0% {
     transform: translateX(0vw);
+    opacity: 0.75;
   }
   100% {
-    transform: translateX(101vw);
+    transform: translateX(100vw);
     background: var(--color-primary);
+    opacity: 0.5;
   }
 }
 
@@ -135,9 +143,6 @@ h1::before {
   z-index: -1;
 
   animation: rotate 25s linear infinite;
-}
-h1 ::before:hover {
-  animation: rotate 2s linear infinite;
 }
 
 @keyframes rotate {
@@ -210,6 +215,7 @@ footer span::before {
 
 @media (max-width: 927px) {
   body {
+    position: static;
     overflow-x: hidden;
     padding: 0;
   }
@@ -222,5 +228,11 @@ footer span::before {
     padding: 1rem;
     height: 48rem;
     width: 100%;
+    box-shadow: 0px 16px 0px #22222250;
+  }
+
+  body::before,
+  body::after {
+    animation: none;
   }
 }
