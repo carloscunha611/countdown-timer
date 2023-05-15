@@ -10,7 +10,7 @@
 
 - Site otimizado para acesso em dispositivos móveis, tablets e desktops.
 - Permite aos usuários visualizar em tempo real quanto tempo falta para a próxima passagem do cometa.
-- Design limpo e simples, com destaque maior na linha do tempo das tarefas concluídas.
+- Design limpo, simples e temático.
 
 ## ⚙ Tecnologias
 
