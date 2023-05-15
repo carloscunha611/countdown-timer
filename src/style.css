@@ -28,6 +28,7 @@ body {
   text-rendering: optimizeSpeed;
   cursor: url('./assets/mouse.png'), auto;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 * > span,
@@ -38,7 +39,8 @@ footer {
 body,
 .container,
 .countdown-timer,
-.countdown-item {
+.countdown-item,
+.infos {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,11 +49,10 @@ body,
 
 body {
   position: relative;
-  height: 100vh;
-  gap: 0.6rem;
+
+  gap: 2rem;
   padding: 2rem;
   flex-direction: column;
-  overflow: hidden;
 }
 
 body::after {
@@ -187,6 +188,24 @@ span {
   font-weight: var(--font-weight-light);
 }
 
+.infos {
+  flex-direction: column;
+  gap: 1rem;
+  width: 75vw;
+}
+.infos h1::before {
+  left: 2.9rem;
+  right: 0.2;
+  top: 0.8rem;
+  bottom: 0rem;
+  width: 2rem;
+  height: 2rem;
+}
+.txt {
+  text-align: justify;
+  letter-spacing: 0.2rem;
+}
+
 footer {
   text-align: center;
   color: var(--color-primary);
@@ -230,9 +249,19 @@ footer span::before {
     width: 100%;
     box-shadow: 0px 16px 0px #22222250;
   }
+  .infos {
+    width: 85%;
+  }
+  .infos .title span {
+    font-size: 1.5rem;
+  }
 
-  body::before,
-  body::after {
-    animation: none;
+  .infos h1::before {
+    left: 4.7rem;
+    top: -0.2rem;
+  }
+
+  .txt {
+    font-size: small;
   }
 }
